@@ -8,7 +8,15 @@ var movieName = "shrek";
 
 axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy").then(
     function(response) {
-        console.log(movieName + "'s rating is: " + response.data.imdbRating);
+        console.log("Movie Title: " + response.data.Title);
+        console.log("Imdb rating is: " + response.data.imdbRating);
+        console.log("Release Year: " + response.data.Year);
+        console.log("Rotten Tomatoes: " + response.data.Ratings[1].Value);
+        console.log("Country it was produce in: " + response.data.Country);
+        console.log("Language: " + response.data.Language);
+        console.log("Plot: " + response.data.Plot)
+        console.log("Actors: " + response.data.Actors);
+        
     })
     .catch(function(error){
     if (error.response){
