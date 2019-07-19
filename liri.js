@@ -1,11 +1,14 @@
 require("dotenv").config();
 var keys = require("./keys.js");
 var axios = require("axios");
-var spotify = require('node-spotify-api');
+// var spotify = require('node-spotify-api');
+var inquirer = require("inquirer");
 
-axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=trilogy").then(
+var movieName = "shrek";
+
+axios.get("http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy").then(
     function(response) {
-        console.log("The movie rating is: " + response.data.imdbRating);
+        console.log(movieName + "'s rating is: " + response.data.imdbRating);
     })
     .catch(function(error){
     if (error.response){
@@ -22,4 +25,18 @@ axios.get("http://www.omdbapi.com/?t=remember+the+titans&y=&plot=short&apikey=tr
     }
     console.log(error.config);
 });
+
+// inquirer.prompt([
+//     {
+//         type: "input",
+//         message: "Enter a movie title: ",
+//         name: "title"
+//     }
+// ]).then(function(movie){
+//     movieName.push(inquirerResponse.name);
+//     console.log(movieName);
+// });
+
+// var movie = parseFloat(process.argv[2]);
+// var number1 = parseFloat(process.argv[3]);
 console.log("hello world");
