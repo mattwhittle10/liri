@@ -47,7 +47,7 @@ switch(search) {
             axios.get("https://rest.bandsintown.com/artists/" + userSearch + "/events?app_id=codingbootcamp").then(function(response){
                 console.log(response.data[0].venue.name);
                 console.log(response.data[0].venue.city + ", " + response.data[0].venue.region + " " + response.data[0].venue.country);
-                console.log(response.data[0]);
+                console.log(response.data[0].datetime);
             });
     break;
     default:
