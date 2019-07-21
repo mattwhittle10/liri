@@ -1,19 +1,17 @@
 require("dotenv").config();
-var keys = require("./keys.js");
-var axios = require("axios");
-var Spotify = require('node-spotify-api');
+let keys = require("./keys.js");
+let axios = require("axios");
+let Spotify = require("node-spotify-api");
+let moment = require("moment");
+let fs = require("fs")
 
-var spotify = new Spotify({
+let spotify = new Spotify({
     id: 'a296ce6a2f9f4d82bc0a18bdef3fe7a0',
     secret: '81ea763416b344d092c2a840e261a379'
   });
 
-
-var inquirer = require("inquirer");
-
-
-var search = (process.argv[2]);
-var userSearch = (process.argv.slice(3).join(" "));
+let search = (process.argv[2]);
+let userSearch = (process.argv.slice(3).join(" "));
 
 switch(search) {
     case "movie-this":
@@ -26,8 +24,14 @@ switch(search) {
                     console.log("Country it was produce in: " + response.data.Country);
                     console.log("Language: " + response.data.Language);
                     console.log("Plot: " + response.data.Plot)
-                    console.log("Actors: " + response.data.Actors);    
+                    console.log("Actors: " + response.data.Actors); 
+                        fs.appendFile('log.txt', response, function(err) {
+                            if (err) throw err;
+                            console.log('Saved!');
                 });
+            });
+            
+
     break;
     case "spotify-this-song":
             spotify.search(
@@ -37,19 +41,33 @@ switch(search) {
                 if (err) {
                   return console.log('Error occurred: ' + err);
                 }
-              console.log("Song Title: " + data.tracks.items[0].artists[0].name);
-              console.log("Artist: " + data.tracks.items[0].name);
-              console.log("Link to Track: " + data.tracks.items[0].external_urls.spotify);
-              console.log("Album: " + data.tracks.items[0].album.name)
+                    console.log("Song Title: " + data.tracks.items[0].artists[0].name);
+                    console.log("Artist: " + data.tracks.items[0].name);
+                    console.log("Link to Track: " + data.tracks.items[0].external_urls.spotify);
+                    console.log("Album: " + data.tracks.items[0].album.name)
+                        fs.appendFile('log.txt', data, function(err) {
+                            if (err) throw err;
+                            console.log('Saved!');
+              });
               });
     break;
     case "concert-this":
             axios.get("https://rest.bandsintown.com/artists/" + userSearch + "/events?app_id=codingbootcamp").then(function(response){
-                console.log(response.data[0].venue.name);
-                console.log(response.data[0].venue.city + ", " + response.data[0].venue.region + " " + response.data[0].venue.country);
-                console.log(response.data[0].datetime);
+                console.log("Venue: " + response.data[0].venue.name);
+                console.log("Location: " + response.data[0].venue.city + ", " + response.data[0].venue.region + " " + response.data[0].venue.country);
+                console.log("Date: " + moment(response.data[0].datetime).format("MMM Do YYYY"));
+                    fs.appendFile('log.txt', response, function(err) {
+                        if (err) throw err;
+                        console.log('Saved!');
+                });
             });
     break;
+    case "do-what-it-says":
+        fs.readFile("./random.txt", 'utf8', function(err, data) {
+            if (err) throw err;
+            console.log(data);
+        });
+    break;
     default:
-        console.log("Type movie, song, or band to start your search");
+        console.log("Type 'movie-this', 'spotify-this-song', 'concert-this', or 'do-what-it-says' to start your search");
 }
