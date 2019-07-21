@@ -23,8 +23,8 @@ This app is organized into three categories. Conerts, Movies, & songs. The user 
 * Switch Case function used to switch to the correct case based on what the user inputs.
 
 ### Link to Github and Recordings
-https://github.com/mattwhittle10/liri
-https://drive.google.com/file/d/1w7lkGPJC6fYZFkJ4q1g8L2FJ5scBen_9/view
+* https://github.com/mattwhittle10/liri
+* https://drive.google.com/file/d/1w7lkGPJC6fYZFkJ4q1g8L2FJ5scBen_9/view
 
 #### My Role
 I created this from start to finish. I used past examples of code from our class and researched a lot on my own. I leveraged the npmjs.com website a lot to see how to use certain packages. 
