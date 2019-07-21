@@ -8,8 +8,7 @@ This app is organized into three categories. Conerts, Movies, & songs. The user 
 
 ### Instructions on running the app
 1. The user will open the file and then the terminal/bash window in whatever code editor they are using.
-2. The user will then type in the command line node liri.js and press enter. 
-    2. This will give a message to the user of what they need to enter after 'node liri.js' in order to select a category to search. Type 'movie-this', 'spotify-this-song', 'concert-this', or 'do-what-it-says' to start your search.
+2. The user will then type in the command line node liri.js and press enter. This will give a message to the user of what they need to enter after 'node liri.js' in order to select a category to search. Type 'movie-this', 'spotify-this-song', 'concert-this', or 'do-what-it-says' to start your search.
 3. The user will then type in node liri.js and then one of the 4 options available to them. 'movie-this', 'spotify-this-song', 'concert-this', or 'do-what-it-says'  
 4. After the user has selected a category for example 'node liri.js movie-this' they need to then type in the movie that they wish to get information on. 
     4. Example: 'node liri.js movie-this shrek'
@@ -23,8 +22,9 @@ This app is organized into three categories. Conerts, Movies, & songs. The user 
 * Fs from Node used to append the log.txt file when a user searches something.
 * Switch Case function used to switch to the correct case based on what the user inputs.
 
-### Link to Github
-
+### Link to Github and Recordings
+https://github.com/mattwhittle10/liri
+https://drive.google.com/file/d/1w7lkGPJC6fYZFkJ4q1g8L2FJ5scBen_9/view
 
 #### My Role
 I created this from start to finish. I used past examples of code from our class and researched a lot on my own. I leveraged the npmjs.com website a lot to see how to use certain packages. 
